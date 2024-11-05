@@ -1,7 +1,6 @@
 
 # PO-SistemaAcademico-Desktop
-Repositório destinado ao desenvolvimento do Portfolio Online (PO) de Sistema Academico Desktop 
-
+Repositório destinado ao desenvolvimento do Portfolio Online (PO) de Sistema Academico Desktop.
 
 # Ferramentas utilizadas
 ![Python](https://img.shields.io/badge/-python-0D1117?style=for-the-badge&logo=python)&nbsp;
