@@ -159,4 +159,3 @@ def cadastrar_turma(nome, sigla, data_inicio, data_fim, dias_nao_letivos):
     
     finally:
         close_connection(conn)  # Fecha a conexão
-

@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 from curso_backend import cadastrar_curso
 from messages_front import *
 
-#Função para carregar imagens
+# Função para carregar imagens
 def load_image(path, width, height):
     image = Image.open(path).convert("RGBA")
     image = image.resize((width, height), Image.LANCZOS)
