@@ -36,23 +36,36 @@ def converter_data(data):
         print(f"Erro ao converter a data: {e}")
         return None
 
-
-# Função para processar e validar os dias não letivos, 
+# Função para processar e validar os dias não letivos
 def processar_dias_nao_letivos(dias_nao_letivos_input, descricao_dia_nao_letivo_input):
-    # Se ambos os campos estiverem vazios, retorna uma lista vazia
-    if not dias_nao_letivos_input and not descricao_dia_nao_letivo_input:
-        return []
-    
-    # Separa os dias e descrições
-    dias = dias_nao_letivos_input.split(",")
-    descricoes = descricao_dia_nao_letivo_input.split(",")
+    try:
+        # Se ambos os campos estiverem vazios, retorna uma lista vazia
+        if not dias_nao_letivos_input and not descricao_dia_nao_letivo_input:
+            return []
         
-    # Verifica se o número de dias e descrições coincide
-    if len(dias) == len(descricoes):
-        # Remove espaços em branco e cria uma lista de tuplas
-        return [(dia.strip(), descricao.strip()) for dia, descricao in zip(dias, descricoes)]
-    else:
-        raise ValueError("O número de dias não letivos e descrições não coincide.")
+        # Separa os dias e descrições
+        dias = dias_nao_letivos_input.split(",")
+        descricoes = descricao_dia_nao_letivo_input.split(",")
+        
+        # Remove espaços em branco dos elementos
+        dias = [dia.strip() for dia in dias]
+        descricoes = [descricao.strip() for descricao in descricoes]
+        
+        # Verifica se o número de dias e descrições coincide, e que cada descrição não seja vazia
+        if len(dias) == len(descricoes):
+            # Verifica se há apenas um dia sem descrição e retorna erro se for o caso
+            if len(dias) == 1 and not descricoes[0]:
+                print("Erro: O número de dias não letivos e descrições não coincide.")
+                return 'erro'
+            
+            # Retorna a lista de tuplas de dias e descrições
+            return list(zip(dias, descricoes))
+        
+        else:
+            raise ValueError("O número de dias não letivos e descrições não coincide.")
+    except ValueError as e:
+        print(f"Erro: {str(e)}")
+        return 'erro'
 
 # Função para cadastrar dias não letivos
 def cadastrar_dias_nao_letivos(dias_nao_letivos, turma_id):
@@ -72,6 +85,9 @@ def cadastrar_dias_nao_letivos(dias_nao_letivos, turma_id):
                 cursor.execute(query, (turma_id, data_convertida, descricao))
             
             conn.commit()  # Confirma a transação
+            
+            # Retorna 'sucesso' para poder exibir corretamente a mensagem no front
+            return 'sucesso'
 
     except Error as e:
         print(f"Erro ao cadastrar dias não letivos: {e}")
@@ -127,14 +143,17 @@ def cadastrar_turma(nome, sigla, data_inicio, data_fim, dias_nao_letivos):
             turma_id = cursor.lastrowid
 
             # Cadastrar os dias não letivos, passando também as datas de início e fim da turma
-            cadastrar_dias_nao_letivos(dias_nao_letivos, turma_id)
-
+            cadastrar_dias = cadastrar_dias_nao_letivos(dias_nao_letivos, turma_id)
+    
             # Exibindo mensagem de sucesso
             titulo_mensagem = Msg.title(1)
             descricao_mensagem = Msg.success('created', 'turma', reference=nome, refType='nome')
             print(titulo_mensagem)
             print(descricao_mensagem)
-
+            
+            # Retorna 'sucesso' para poder exibir corretamente a mensagem no front
+            return 'sucesso'
+            
     except Error as e:
         print(f"Erro ao adicionar a turma: {e}")
     

@@ -42,6 +42,9 @@ def cadastrar_curso(nome, sigla, tipo_duracao, periodo_curso, tipo_graduacao):
             descricao_mensagem = Msg.success('created', 'curso', reference=nome, refType='nome')
             print(titulo_mensagem)
             print(descricao_mensagem)
+            
+            # Retorna 'sucesso' para poder exibir corretamente a mensagem no front
+            return 'sucesso'
 
     except Exception as e:
         print(f"Erro ao adicionar o curso: {e}")
