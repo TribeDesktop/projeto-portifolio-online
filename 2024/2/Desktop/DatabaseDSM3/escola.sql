@@ -395,7 +395,7 @@ CREATE TABLE IF NOT EXISTS `escola`.`dias` (
   `nomeDia` VARCHAR(20) NOT NULL,
   `disciplinaID` INT NOT NULL,
   `horarioID` INT NOT NULL,
-  INDEX `fk_dias_disciplinas1_idx` (`disciplinaID` ASC) VISIBLE,
+  INDEX `fk_dias_disciplinas1_idx` (`disciplinaID` ASC),
   CONSTRAINT `fk_dias_disciplinas1`
     FOREIGN KEY (`disciplinaID`)
     REFERENCES `escola`.`disciplinas` (`disciplinaID`)
