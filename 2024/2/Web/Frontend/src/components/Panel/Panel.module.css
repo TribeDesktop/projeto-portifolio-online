@@ -1,0 +1,28 @@
+.homeHeader {
+  top: 0;
+  width: 100%;
+  height: 10.625rem;
+  background-color: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  color: #677c91;
+  padding-left: 50px;
+  justify-content: space-between;
+}
+
+.homeHeaderText > h1 {
+  margin-top: 40px;
+  font-size: 1.6rem;
+  color: #2c3e50;
+}
+
+.homeLogo {
+  width: 305px;
+  height: 226.79px;
+}
+
+.sec {
+  font-size: 18px;
+}

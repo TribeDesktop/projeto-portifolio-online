@@ -1,0 +1,155 @@
+@font-face {
+  font-family: nunito;
+  src: url('../../../../assets/fonts/Nunito-Regular.ttf');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.absenceContainer {
+  top: 0;
+  width: 100vw;
+  background-color: #f2f2f2;
+  display: flex;
+  font-family: nunito;
+}
+
+.absenceSideContent {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 81%;
+  min-height: 100%;
+  background-color: #f2f2f2;
+  margin-left: 19.1%;
+}
+
+.absenceInfo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.absenceCard {
+  width: 95%;
+  background-color: white;
+  margin-top: 52px;
+  margin-bottom: 52px;
+  border-radius: 5px;
+}
+
+.absenceCardTitle {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+
+.absenceCardTitle p {
+  font-size: 32px;
+  font-weight: 500;
+  color: #2c3e50;
+  margin: 20px 0 20px 40px;
+}
+
+.absenceCardTitle hr {
+  background-color: #f2f2f2;
+  width: 200px;
+  height: 4px;
+  outline: none;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.absenceCardSubject {
+  margin: 36px 40px;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.absenceCardSubject span {
+  font-size: 22px;
+  font-weight: 300;
+  color: #000;
+  display: inline-block;
+}
+
+.absenceCardSubject select {
+  font-size: 18px;
+  font-weight: 300;
+  color: #3f3f3f;
+  background-color: #f2f2f2;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  width: 300px;
+  padding: 5px 10px;
+}
+
+.absenceCardTable {
+  width: 100%;
+  padding: 20px 40px 40px 40px;
+}
+
+.absenceCardTableHeader {
+  width: 100%;
+}
+
+.absenceCardTableBody {
+  width: 100%;
+  margin: 20px 0 -2px 0;
+}
+
+.absenceHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.absenceHeaderAcronym {
+  margin-left: 120px;
+}
+
+.absenceHeaderTotalClasses {
+  margin-right: -30px;
+}
+
+.absenceBody {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.absenceHeader h1 {
+  font-size: 24px;
+  color: #233058;
+  font-weight: bold;
+  line-height: 4rem;
+}
+
+.absenceBody h2 {
+  font-size: 24px;
+  color: #3f3f3f;
+  font-weight: bold;
+  line-height: 4rem;
+}
+
+.absenceCardTableBody hr {
+  border: none;
+  outline: none;
+  height: 2px;
+  background-color: #677c91;
+  border-radius: 10px;
+}

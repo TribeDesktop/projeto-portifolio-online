@@ -1,0 +1,96 @@
+services:
+  postgres:
+    container_name: praxis_db
+    build: 
+      context: ./Postgres
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_DB: praxis
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    networks:
+      - zabbix-net
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: 
+      context: ./Backend
+      dockerfile: Dockerfile
+    container_name: praxis-backend-api
+    ports:
+      - "3000:3000"
+    environment:
+      PG_DB: praxis
+      PG_USER: admin
+      PG_PASSWORD: admin
+      PG_HOST: praxis_db
+      PG_PORT: 5432
+      PORT: 3000
+    networks:
+      - zabbix-net
+    depends_on:
+      - postgres
+  frontend:
+    build: 
+      context: ./Frontend
+      dockerfile: Dockerfile
+    container_name: praxis-frontend
+    ports:
+      - "5173:5173"
+    networks:
+      - zabbix-net
+  zabbix-snmptraps:
+    image: zabbix/zabbix-snmptraps:alpine-7.0-latest
+    container_name: zabbix-snmptraps
+    networks:
+      - zabbix-net
+    ports:
+      - "162:1162/udp"
+    restart: unless-stopped
+  zabbix-server:
+    image: zabbix/zabbix-server-pgsql:alpine-7.0-latest
+    container_name: zabbix-server-pgsql
+    environment:
+      DB_SERVER_HOST: praxis_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: praxis
+      ZBX_ENABLE_SNMP_TRAPS: "true"
+    networks:
+      - zabbix-net
+    ports:
+      - "10051:10051"
+    restart: unless-stopped
+  zabbix-web:
+    image: zabbix/zabbix-web-service:alpine-7.0-latest
+    container_name: zabbix-web
+    environment:
+      DB_SERVER_HOST: praxis_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: praxis
+      ZBX_SERVER_NAME: "Zabbix Server"
+    networks:
+      - zabbix-net
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
+  zabbix-web-apache:
+    image: zabbix/zabbix-web-apache-pgsql:alpine-7.0-latest
+    container_name: zabbix-web-apache
+    environment:
+      ZBX_SERVER_HOST: zabbix-server
+      DB_SERVER_HOST: praxis_db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: praxis
+    ports:
+      - "8080:8080"
+    networks:
+      - zabbix-net
+
+networks:
+  zabbix-net:
+    driver: bridge
+

@@ -1,0 +1,183 @@
+@font-face {
+  font-family: 'Nunito';
+  src: url('../../../assets/fonts/Nunito-Regular.ttf') format('truetype');
+}
+
+.menuContainer {
+  color: white;
+  top: 0;
+  height: 100%;
+  width: 20%;
+  background-color: #3c5874;
+  font-family: 'Nunito', sans-serif; /* Use aspas */
+  position: fixed;
+}
+
+.menuLogo {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: end;
+  padding-left: 10%;
+}
+
+.menuUserInfo {
+  width: 100%;
+  height: 14%;
+  display: flex;
+  align-items: center;
+  padding-left: 8%;
+  gap: 6%;
+  font-size: 1.4rem;
+  padding-top: 20px;
+}
+
+#userImageMenu {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-image: url('../../../assets/images/general/img-user.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.menuConsult {
+  margin-top: 5%;
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 8%;
+}
+
+.menuRegistration {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 8%;
+}
+
+.consultTitle {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  font-size: 1.4rem;
+}
+
+#title {
+  font-size: 1.4rem;
+  color: white;
+}
+
+.registryTitle {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  font-size: 1.4rem;
+}
+
+.consultActions > div,
+.registryActions > div {
+  display: flex;
+}
+
+.consultItems {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  height: 16%;
+  font-size: 1.2rem;
+}
+
+#items {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.registryItems {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  height: 16%;
+  font-size: 1.2rem;
+}
+
+.consultActions {
+  margin-top: 4%;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.registryActions {
+  margin-top: 8%;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.consultItems > img,
+.registryItems > img,
+.menuActions > img {
+  width: 20px;
+  height: 20px;
+}
+
+.menuActions {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 8%;
+  margin-top: 5%;
+  font-size: 1.2rem;
+}
+
+.menuActionsImg {
+  display: flex;
+  height: 40px;
+  align-items: center;
+  gap: 10px;
+}
+
+.menuActionsImg > img {
+  width: 20px;
+  height: 20px;
+}
+
+.menuActions > div {
+  display: flex;
+}
+
+#string {
+  width: 40%;
+  height: 0.5px;
+  background-color: #f4bd50;
+}
+
+#string2 {
+  margin-top: 5%;
+  width: 100%;
+  height: 0.1px;
+  background-color: #f4bd50;
+}
+
+#whiteLogo {
+  width: 100px;
+  height: 20px;
+}

@@ -1,0 +1,37 @@
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
+const BottomNavigationBar = () => {
+  return (
+    <View style={styles.bottomBar}>
+      
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  bottomBar: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 45,
+    backgroundColor: '#FFCC10',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  button: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  label: {
+    fontSize: 12,
+    color: '#1A3E78',
+    marginTop: 4,
+  },
+});
+
+export default BottomNavigationBar;

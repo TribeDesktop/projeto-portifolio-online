@@ -1,0 +1,130 @@
+@font-face {
+  font-family: nunito;
+  src: url('../../../../assets/fonts/Nunito-Regular.ttf');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.classesContainer {
+  top: 0;
+  width: 100vw;
+  background-color: #f2f2f2;
+  display: flex;
+  font-family: nunito;
+}
+
+.classesSideContent {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 81%;
+  min-height: 100%;
+  background-color: #f2f2f2;
+  margin-left: 19.1%;
+}
+
+.classesInfo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.classesCard {
+  width: 95%;
+  background-color: white;
+  margin-top: 52px;
+  margin-bottom: 52px;
+  border-radius: 5px;
+}
+
+.classesCardTitle {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+
+.classesCardTitle p {
+  font-size: 32px;
+  font-weight: 500;
+  color: #2c3e50;
+  margin: 20px 0px 20px 40px;
+}
+
+.classesCardTitle hr {
+  background-color: #f2f2f2;
+  width: 200px;
+  height: 4px;
+  outline: none;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.classesCardTable {
+  width: 100%;
+  padding: 20px 40px 40px 40px;
+}
+
+.classesCardTableHeader {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.classesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.classesHeader span {
+  font-size: 24px;
+  color: #233058;
+  font-weight: bold;
+}
+
+.classesCardTableBody {
+  width: 100%;
+  margin: 20px 0px -2px 0px;
+}
+
+.classesBody {
+  width: 100%;
+}
+
+.classesWeekdayBody {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.classesDay {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.classesDay span {
+  font-size: 28px;
+  color: #3f3f3f;
+  font-weight: bold;
+}
+
+.classesDay p {
+  font-size: 20px;
+  color: #3f3f3f;
+  font-weight: bold;
+}

@@ -1,0 +1,140 @@
+@font-face {
+  font-family: nunito;
+  src: url('../../../assets/fonts/Nunito-Regular.ttf');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.loginContainer {
+  font-family: nunito;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
+}
+
+.loginLeft {
+  margin-left: 90px;
+  flex: 1;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loginRight {
+  flex: 1.5;
+  background-color: #2c3e50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 100px;
+  position: relative;
+}
+
+.loginLeftTitle {
+  margin-bottom: 80px;
+}
+
+.loginLeft h1 {
+  font-size: 3rem;
+  color: #2c3e50;
+}
+
+.loginLeft p {
+  color: #3c5874;
+  font-size: 1.4rem;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+  width: 50%;
+}
+
+.inputError {
+  width: 107%;
+  font-family: nunito;
+  padding: 13px 59px;
+  font-size: 1.3rem;
+  border: 2px solid red;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #2c3e50;
+}
+
+form {
+  width: 100%;
+  height: 34%;
+}
+
+.inputFormStudent {
+  width: 107%;
+  font-family: nunito;
+  padding: 13px 59px;
+  font-size: 1.3rem;
+  border: 2px solid #677c91;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #2c3e50;
+}
+
+.imgInputs {
+  position: absolute;
+  margin-top: 7.7px;
+  margin-left: 10px;
+}
+
+.loginButtonStudent {
+  margin-top: 70px;
+  background-color: #ff6600;
+  color: white;
+  padding: 13px 22.5%;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.loginButtonStudent:hover {
+  background-color: #e65c00;
+}
+
+.forgotLinkStudent {
+  text-decoration: underline;
+  margin-left: 17%;
+  font-size: 1.2rem;
+  color: #3c5874;
+  text-decoration: none;
+}
+
+.forgotLink:hover {
+  text-decoration: underline;
+}
+
+.loginLogo {
+  top: 20px;
+  left: 20px;
+  font-size: 2rem;
+  color: white;
+}
+
+.loginImage {
+  width: 60%;
+}
+
+.loginLogo img {
+  width: 200px;
+  height: 40px;
+}
+
+#miniLogo {
+  width: 45px;
+  height: 30px;
+  margin-bottom: 80px;
+}

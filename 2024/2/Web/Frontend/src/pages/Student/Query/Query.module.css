@@ -1,0 +1,96 @@
+/* Query.module.css */
+@font-face {
+  font-family: nunito;
+  src: url('../../../assets/fonts/Nunito-Regular.ttf');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.queryContainer {
+  top: 0;
+  width: 100vw;
+  background-color: #f2f2f2;
+  display: flex;
+  font-family: nunito;
+}
+
+.querySideContent {
+  top: 0;
+  width: 81%;
+  height: 100%;
+  background-color: #f2f2f2;
+  margin-left: 19.1%;
+}
+
+.queryInfo {
+  margin-bottom: 26px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  row-gap: 24px;
+  column-gap: 48px;
+  flex-wrap: wrap;
+}
+
+.queryTitle {
+  width: 93%;
+  height: 79px;
+  background-color: white;
+  border-radius: 5px;
+  color: black;
+  display: flex;
+  align-items: center;
+  margin-top: 26px;
+}
+
+.queryTitleText {
+  margin-left: 40px;
+  font-size: 32px;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.queryCard {
+  padding: 36px;
+  width: 44%;
+  height: 38%;
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+}
+
+.cardTitles {
+  font-size: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 16px;
+}
+
+.cardTitle p {
+  font-weight: 500;
+}
+
+.cardContent {
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardContent p {
+  font-weight: 300;
+}
