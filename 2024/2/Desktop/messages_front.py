@@ -1,7 +1,7 @@
 from tkinter import *
 from PIL import Image, ImageTk
 from messages_back import Msg
-
+import os
 
 
 # Função para gerar um gradiente entre duas cores
@@ -36,14 +36,10 @@ def atualizar_mensagem(canvas, msg):
     
 # Função para carregar e redimensionar imagem
 def carregar_imagem(caminho, largura, altura):
-    try:
-        imagem = Image.open(caminho)
-        imagem_redimensionada = imagem.resize((largura, altura), Image.LANCZOS)
-        return ImageTk.PhotoImage(imagem_redimensionada)
-    except FileNotFoundError:
-        print(f"Erro: O arquivo {caminho} não foi encontrado.")
-        return None  # Retorna None se a imagem não for encontrada
-
+    caminho = os.path.join(os.path.dirname(__file__), caminho)
+    imagem = Image.open(caminho)
+    imagem_redimensionada = imagem.resize((largura, altura), Image.LANCZOS)
+    return ImageTk.PhotoImage(imagem_redimensionada)
 
 # Função principal que exibe o popup
 def exibir_popup(titulo, mensagem):
