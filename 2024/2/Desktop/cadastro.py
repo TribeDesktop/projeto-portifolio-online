@@ -3,10 +3,11 @@ import tkinter.ttk as ttk
 from PIL import Image, ImageTk
 from tkinter import messagebox
 import os
-import requests  # Certifique-se de que a biblioteca requests esteja instalada
+import requests  
 from alterar import ToplevelAlterar
 from disciplinas_backend import list_turma
 from disciplinas_backend import list_curso
+import subprocess
 
 
 class Toplevel1:
@@ -38,12 +39,25 @@ class Toplevel1:
 
         # Cria os widgets da tela de cadastro
         self.create_widgets()
+        
+        marca_page_path = os.path.join(os.path.dirname(__file__), 'imgs', 'marca_page.png')
+        try:
+            img_marca_page = Image.open(marca_page_path)
+            img_marca_page = img_marca_page.resize((30, 100)) 
+            img_marca_page_tk = ImageTk.PhotoImage(img_marca_page)
+
+            label_img = tk.Label(self.TFrame1, image=img_marca_page_tk, bg="white")
+            label_img.image = img_marca_page_tk  
+            label_img.place(relx=0.05, y=0.0, anchor=tk.N)  
+        except Exception as e:
+            print(f"Erro ao carregar a imagem marca_page.png: {e}")
+            print(f"Tentando carregar imagem de: {marca_page_path}")
 
         # Desenha o título
         self.draw_title("Cadastrar Disciplina")
 
         self.add_small_image()
-
+        
     def create_widgets(self):
         # Frame para os campos de entrada
         self.TFrame1 = tk.Frame(self.top, bg="white")
@@ -92,29 +106,34 @@ class Toplevel1:
         self.txt_total_aulas.place(
             relx=0.121, rely=0.601, relheight=0.055, relwidth=0.3)
 
+        def on_key_press(event):
+            if event.keysym == "BackSpace":
+                return
+            if event.keysym == "Tab":
+                return
+            current_text = self.txt_carga_horaria.get()
+            if len(current_text) == 2 and event.char.isdigit():
+                self.txt_carga_horaria.insert(2, ':')
+            elif len(current_text) > 4:
+                return "break"  
+            if not event.char.isdigit():
+                return "break" 
         self.label_carga_horaria = tk.Label(
-            self.TFrame1, text='Carga Horária:', font="Montserrat 8", bg="white", fg="#2C5FA3")
+            self.TFrame1, text='Carga Horária: (hh:mm)', font="Montserrat 8", bg="white", fg="#2C5FA3")
         self.label_carga_horaria.place(
-            relx=0.121, rely=0.705, height=21, width=85)
-        self.txt_carga_horaria = ttk.Entry(self.TFrame1, validate="key", validatecommand=(
-            root.register(validate_number), '%P'))
+            relx=0.121, rely=0.705, height=21, width=140)
+        self.txt_carga_horaria = ttk.Entry(self.TFrame1)
         self.txt_carga_horaria.place(
             relx=0.121, rely=0.757, relheight=0.055, relwidth=0.3)
-
-        self.label_ementa = tk.Label(
-            self.TFrame1, text='Ementa:', font="Montserrat 8", bg="white", fg="#2C5FA3")
-        self.label_ementa.place(relx=0.564, rely=0.350, height=21, width=55)
-        self.txt_ementa = tk.Text(self.TFrame1)
-        self.txt_ementa.place(relx=0.564, rely=0.420,
-                              height=140, relwidth=0.381)
-
-        # Lista de turma
+        self.txt_carga_horaria.bind('<KeyPress>', on_key_press)
+        
+            # Lista de turma
         self.label_turmaid = tk.Label(
             self.TFrame1, text='Turma ID:', font="Montserrat 8", bg="white", fg="#2C5FA3")
         self.label_turmaid.place(relx=0.564, rely=0.078, height=21, width=60)
 
         self.combobox_turmaid = ttk.Combobox(
-            self.TFrame1, validate="key", validatecommand=(root.register(validate_number), '%P'))
+            self.TFrame1, validate="key", state="readonly")
         self.combobox_turmaid.place(
             relx=0.564, rely=0.131, relheight=0.055, relwidth=0.1)
 
@@ -124,7 +143,7 @@ class Toplevel1:
         self.label_cursoid.place(relx=0.564, rely=0.185, height=21, width=60)
 
         self.combobox_cursoid = ttk.Combobox(
-            self.TFrame1, validate="key", validatecommand=(root.register(validate_number), '%P'))
+            self.TFrame1, validate="key", state="readonly")
         self.combobox_cursoid.place(
             relx=0.564, rely=0.251, relheight=0.055, relwidth=0.1)
 
@@ -138,10 +157,27 @@ class Toplevel1:
         self.combobox_cursoid['values'] = [
             f"{curs[0]} - {curs[1]}" for curs in curso]
 
+        self.label_ementa = tk.Label(
+            self.TFrame1, text='Ementa:', font="Montserrat 8", bg="white", fg="#2C5FA3")
+        self.label_ementa.place(relx=0.564, rely=0.350, height=21, width=55)
+        self.txt_ementa = tk.Text(self.TFrame1)
+        self.txt_ementa.place(relx=0.564, rely=0.420,
+                              height=140, relwidth=0.381)
+
         # Botão Cadastrar
         self.Button1 = tk.Button(
             self.TFrame1, text='Cadastrar', command=self.salvar_dados)
         self.Button1.place(relx=0.698, rely=0.888, height=26, width=77)
+
+        #Botão Fechar
+        def fechar_programa():
+            try:
+                root.destroy()  # Fecha a janela atual
+                subprocess.Popen(["python", "diciplina.py"])  # Abre a nova janela
+            except Exception as e:
+                print(f"Erro ao executar tarefa: {e}")
+        self.Fechar = tk.Button(root, text="⬅️", font=("Montserrat", 18), bg="white", fg="#004080",command=fechar_programa)
+        self.Fechar.place(x=10, y=10)
 
      
 
@@ -250,7 +286,7 @@ class Toplevel1:
             "siglaDisciplina": sigla,
             "aulasSemanaisDisciplina": int(aulas_semanais),
             "aulasTotaisSemestreDisciplina": int(total_aulas),
-            "cargaHorariaDisciplina": int(carga_horaria),
+            "cargaHorariaDisciplina": carga_horaria,
             "ementa": ementa,
             "turmaID": int(turma),
             "cursoID": int(curso)
